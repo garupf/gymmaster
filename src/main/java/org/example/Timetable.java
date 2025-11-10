@@ -1,10 +1,23 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Timetable {
 
-    //private /* как это хранить??? */ timetable
+    private final Map<DayOfWeek, TreeMap<TimeOfDay, TrainingSession>> timetable;
+
+    public Timetable() {
+        this.timetable = new HashMap<>();
+    }
+
+    //private /* как это хранить??? */ timetable//
+
+
 
     public void addNewTrainingSession(TrainingSession trainingSession) {
+
         //сохраняем занятие в расписании
     }
 

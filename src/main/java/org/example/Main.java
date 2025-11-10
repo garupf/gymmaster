@@ -4,18 +4,50 @@ package org.example;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-        String s = "gh";
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        GymData gymData = new GymData();
 
-            TimeOfDay timeOfDay = new TimeOfDay(0,0);
+        Timetable timetable = new Timetable();
 
-        }
+        initTimetable(gymData, timetable);
+    }
+
+    public static void initTimetable(GymData gymData, Timetable timetable) {
+        TrainingSession session1 = new TrainingSession(gymData.getGroupByName("гимнастика дети 9-10"),
+                gymData.getCoachByFullName("Шмотков Владимир Владимирович"), DayOfWeek.MONDAY, new TimeOfDay(10,0));
+        TrainingSession session2 = new TrainingSession(gymData.getGroupByName("гимнастика дети 11-12"),
+                gymData.getCoachByFullName("Шмотков Владимир Владимирович."), DayOfWeek.MONDAY, new TimeOfDay(13,0));
+        TrainingSession session3 = new TrainingSession(gymData.getGroupByName("бассейн взрослые"),
+                gymData.getCoachByFullName("Семёнов Василий Константинович"), DayOfWeek.MONDAY, new TimeOfDay(14,0));
+
+        TrainingSession session4 = new TrainingSession(gymData.getGroupByName("бассейн взрослые"),
+                gymData.getCoachByFullName("Семёнов Василий Константинович"), DayOfWeek.TUESDAY, new TimeOfDay(12,0));
+        TrainingSession session5 = new TrainingSession(gymData.getGroupByName("каратэ взрослые"),
+                gymData.getCoachByFullName("Шмотков Владимир Владимирович"), DayOfWeek.TUESDAY, new TimeOfDay(15,0));
+
+        TrainingSession session6 = new TrainingSession(gymData.getGroupByName("футбол взрослые"),
+                gymData.getCoachByFullName("Тихомиров Александр Евгеньевич"), DayOfWeek.WEDNESDAY, new TimeOfDay(10,0));
+        TrainingSession session7 = new TrainingSession(gymData.getGroupByName("волейбол взрослые"),
+                gymData.getCoachByFullName("Беляев Евгений Викторович"), DayOfWeek.WEDNESDAY, new TimeOfDay(12,0));
+        TrainingSession session8 = new TrainingSession(gymData.getGroupByName("гимнастика дети 7-8"),
+                gymData.getCoachByFullName("Морев Егор Владиславович"), DayOfWeek.WEDNESDAY, new TimeOfDay(14,0));
+
+        TrainingSession session9 = new TrainingSession(gymData.getGroupByName("дзюдо взрослые"),
+                gymData.getCoachByFullName("Уксусов Николай Алексеевич"), DayOfWeek.THURSDAY, new TimeOfDay(13,0));
+        TrainingSession session10 = new TrainingSession(gymData.getGroupByName("йога взрослые"),
+                gymData.getCoachByFullName("Смирнов Никита Антонович"), DayOfWeek.THURSDAY, new TimeOfDay(15,0));
+
+        TrainingSession session11 = new TrainingSession(gymData.getGroupByName("пилатес взрослые"),
+                gymData.getCoachByFullName("Миролюбов Юрий Борисович"), DayOfWeek.FRIDAY, new TimeOfDay(10,0));
+        TrainingSession session12 = new TrainingSession(gymData.getGroupByName("гимнастика дети 9-10"),
+                gymData.getCoachByFullName("Топрова Анастасия Сергеевна"), DayOfWeek.FRIDAY, new TimeOfDay(12,0));
+        TrainingSession session13 = new TrainingSession(gymData.getGroupByName("гимнастика дети 11-12"),
+                gymData.getCoachByFullName("Страшная Анна Семёновна"), DayOfWeek.FRIDAY, new TimeOfDay(14,0));
+
+        TrainingSession session14 = new TrainingSession(gymData.getGroupByName("бассейн взрослые"),
+                gymData.getCoachByFullName("Веселов Степан Андреевич"), DayOfWeek.SATURDAY, new TimeOfDay(13,0));
+        TrainingSession session15 = new TrainingSession(gymData.getGroupByName("каратэ взрослые"),
+                gymData.getCoachByFullName("Волкова Галина Юрьевна"), DayOfWeek.SATURDAY, new TimeOfDay(15,0));
+
     }
 }

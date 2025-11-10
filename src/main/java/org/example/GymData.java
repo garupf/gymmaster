@@ -11,13 +11,10 @@ public class GymData {
 
    public GymData() {
        initCoaches();
-   }
-
-   public GymData() {
        initGroups();
    }
 
-   private void initCoaches() {
+    private void initCoaches() {
        coaches.put("Шмотков Владимир Владимирович", new Coach("Шмотков", "Владимир", "Владимирович"));
        coaches.put("Семёнов Василий Константинович", new Coach("Семёнов", "Василий", "Константинович"));
        coaches.put("Тихомиров Александр Евгеньевич", new Coach("Тихомиров", "Александр", "Евгеньевич"));
