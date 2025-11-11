@@ -17,7 +17,14 @@ public class Timetable {
 
 
     public void addNewTrainingSession(TrainingSession trainingSession) {
-
+        if (this.timetable.containsKey(trainingSession.getDayOfWeek())) {
+            DayOfWeek dayOfWeek = trainingSession.getDayOfWeek();
+        } else {
+            this.timetable.put(trainingSession.getDayOfWeek(), new TreeMap<>());
+        }
+        TreeMap<TimeOfDay, TrainingSession> map = this.timetable.get(trainingSession.getDayOfWeek());
+        TimeOfDay time = trainingSession.getTimeOfDay();
+        map.put(time, trainingSession);
         //сохраняем занятие в расписании
     }
 
