@@ -1,20 +1,19 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Timetable {
 
-    private final Map<DayOfWeek, TreeMap<TimeOfDay, TrainingSession>> timetable;
-
     public Timetable() {
         this.timetable = new HashMap<>();
     }
 
-    //private /* как это хранить??? */ timetable//
+    private final Map<DayOfWeek, TreeMap<TimeOfDay, TrainingSession>> timetable;
 
-
+        //private /* как это хранить??? */ timetable//
 
     public void addNewTrainingSession(TrainingSession trainingSession) {
         if (this.timetable.containsKey(trainingSession.getDayOfWeek())) {
@@ -29,6 +28,15 @@ public class Timetable {
     }
 
     public TrainingSession getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
+        if (dayOfWeek != null) {
+            TreeMap<TimeOfDay, TrainingSession> map = this.timetable.get(dayOfWeek);
+            if (map == null) {
+                return null;
+            } else {
+                TimeOfDay timeOfDay = map.firstKey();
+            }
+        }
+
         //как реализовать, тоже непонятно, но сложность должна быть О(1)
         return null;
     }
