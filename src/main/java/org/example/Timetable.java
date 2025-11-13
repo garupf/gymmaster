@@ -16,14 +16,14 @@ public class Timetable {
         } else {
             this.timetable.put(trainingSession.getDayOfWeek(), new TreeMap<>());
         }
-        TreeMap<TimeOfDay, TrainingSession> map = this.timetable.get(trainingSession.getDayOfWeek());
+        TreeMap<TimeOfDay, TrainingSession> map = timetable.get(trainingSession.getDayOfWeek());
         TimeOfDay time = trainingSession.getTimeOfDay();
         map.put(time, trainingSession);
     }
 
     public List<TrainingSession> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
         if (dayOfWeek != null) {
-            TreeMap<TimeOfDay, TrainingSession> map = this.timetable.get(dayOfWeek);
+            TreeMap<TimeOfDay, TrainingSession> map = timetable.get(dayOfWeek);
             if (map == null) {
                 return new ArrayList<>();
             } else {
@@ -33,9 +33,25 @@ public class Timetable {
         return new ArrayList<>();
     }
 
-    public TrainingSession  getTrainingSessionsForDayAndTime(DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
-        //как реализовать, тоже непонятно, но сложность должна быть О(1)
-        return null;
+    public List<TrainingSession>  getTrainingSessionsForDayAndTime(DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
+        TreeMap<TimeOfDay, TrainingSession> map = timetable.get(dayOfWeek);
+        if (map == null) {
+            return new ArrayList<>();
+        }
+        TrainingSession trainingSession = map.get(timeOfDay);
+        if (trainingSession == null) {
+            return new ArrayList<>();
+        } else {
+            List<TrainingSession> trainingSessions = new ArrayList<>();
+            trainingSessions.add(trainingSession);
+            return trainingSessions;
+        }
+    }
+
+    public Map<Coach, Integer> getCountByCoaches(Coach coach) {
+        int count = 0;
+
+        return count;
     }
 
 }
