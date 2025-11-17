@@ -14,10 +14,10 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
 
     @Override
     public int compareTo(TimeOfDay o) {
-        if (this.hours < o.hours) {
-            return -1;
+        if (this.hours != o.hours) {
+            return Integer.compare(this.hours, o.hours);
         }
-        return 0;
+        return Integer.compare(this.minutes, o.minutes);
     }
 
     public int getHours() {
