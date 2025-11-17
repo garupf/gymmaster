@@ -2,6 +2,8 @@ import org.example.*;
 import org.junit.jupiter.api.Test;
 import org.example.Timetable;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TimetableTest {
@@ -16,6 +18,10 @@ public class TimetableTest {
                 DayOfWeek.MONDAY, new TimeOfDay(13, 0));
 
         timetable.addNewTrainingSession(singleTrainingSession);
+        List<TrainingSession> mondaySessions = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
+        assertEquals(1, mondaySessions.size());
+        List<TrainingSession> tuesdaySessions = timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY);
+        assertEquals(0, tuesdaySessions.size());
 
         //Проверить, что за понедельник вернулось одно занятие
         //Проверить, что за вторник не вернулось занятий
