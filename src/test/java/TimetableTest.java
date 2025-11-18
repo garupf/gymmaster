@@ -81,7 +81,6 @@ public class TimetableTest {
 
     }
 
-    //вернуть тренера и количество занятий у него
     @Test
     void testGetTrainingSessionsForSingleCoach() {
         Timetable timetable = new Timetable();
@@ -92,20 +91,65 @@ public class TimetableTest {
 
         timetable.addNewTrainingSession(singleTrainingSession);
 
-        Map<Coach, Integer> coachSessions = timetable.getCountByCoaches();
+        List<Map.Entry<Coach, Integer>> list = timetable.getCountByCoaches();
 
-        assertEquals(1, coachSessions.size());
-        assertTrue(coachSessions.containsKey(coach));
-        assertEquals(1, coachSessions.get(coach));
+        assertEquals(1, list.size());
+        assertEquals(coach, list.get(0).getKey());
+        assertEquals(1, list.get(0).getValue());
 
     }
-    //вернуть несколько тренеров и количество занятий у каждого
+
     @Test
     void testGetTrainingSessionsForMultipleCoaches() {
         Timetable timetable = new Timetable();
+        Group group = new Group("Акробатика для детей", Age.CHILD, 60);
+        Coach coachPetrov = new Coach("Петров", "Андрей", "Викторович");
+        Coach coachIvanov = new Coach("Иванов", "Николай", "Егорович");
+        TrainingSession mondayTrainingSession = new TrainingSession(group, coachPetrov,
+                DayOfWeek.MONDAY, new TimeOfDay(13, 0));
 
+        timetable.addNewTrainingSession(mondayTrainingSession);
+
+        TrainingSession thursdayTrainingSession = new TrainingSession(group, coachPetrov,
+                DayOfWeek.THURSDAY, new TimeOfDay(14, 0));
+
+        timetable.addNewTrainingSession(thursdayTrainingSession);
+
+        TrainingSession wednesdayTrainingSession = new TrainingSession(group, coachIvanov,
+                DayOfWeek.WEDNESDAY, new TimeOfDay(13, 0));
+
+        timetable.addNewTrainingSession(wednesdayTrainingSession);
+
+        List<Map.Entry<Coach, Integer>> list = timetable.getCountByCoaches();
+
+        boolean foundPetrov = false;
+        boolean foundIvanov = false;
+        int petrovCount = 0;
+        int ivanovCount = 0;
+        for (Map.Entry<Coach, Integer> entry : list) {
+            if (entry.getKey().equals(coachPetrov)) {
+                foundPetrov = true;
+                petrovCount = entry.getValue();
+            }
+            if (entry.getKey().equals(coachIvanov)) {
+                foundIvanov = true;
+                ivanovCount = entry.getValue();
+            }
+        }
+
+        assertTrue(foundPetrov);
+        assertTrue(foundIvanov);
+        assertEquals(2, petrovCount);
+        assertEquals(1, ivanovCount);
     }
     //вернуть пустую коллекцию если нет тренировок
+    @Test
+    void testGetTrainingSessionsForEmptyCoaches() {
+        Timetable timetable = new Timetable();
+        List<Map.Entry<Coach, Integer>> list = timetable.getCountByCoaches();
+
+        assertEquals(0, list.size());
+    }
 
 }
 
