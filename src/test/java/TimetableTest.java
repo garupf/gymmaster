@@ -142,7 +142,7 @@ public class TimetableTest {
         assertEquals(2, petrovCount);
         assertEquals(1, ivanovCount);
     }
-    //вернуть пустую коллекцию если нет тренировок
+
     @Test
     void testGetTrainingSessionsForEmptyCoaches() {
         Timetable timetable = new Timetable();
