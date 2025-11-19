@@ -35,6 +35,7 @@ public class Coach {
                 Objects.equals(name, coach.name) &&
                 Objects.equals(middleName, coach.middleName);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(surname, name, middleName);
