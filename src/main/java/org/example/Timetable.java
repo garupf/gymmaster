@@ -51,10 +51,10 @@ public class Timetable {
     public List<Map.Entry<Coach, Integer>> getCountByCoaches() {
         Map<Coach, Integer> coachCount = new HashMap<>();
 
-        for (TreeMap<TimeOfDay, TrainingSession> sessions : timetable.values()) {
-            if (sessions == null) continue;
+        for (TreeMap<TimeOfDay, TrainingSession> dayMap : timetable.values()) {
+            if (dayMap == null) continue;
 
-            for (TrainingSession session : sessions.values()) {
+            for (TrainingSession session : dayMap.values()) {
                 Coach coach = session.getCoach();
                 coachCount.put(coach, coachCount.getOrDefault(coach, 0) + 1);
             }
@@ -62,7 +62,6 @@ public class Timetable {
 
         List<Map.Entry<Coach, Integer>> list = new ArrayList<>(coachCount.entrySet());
         list.sort(Map.Entry.<Coach, Integer>comparingByValue().reversed());
-
         return list;
     }
 
