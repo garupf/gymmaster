@@ -141,6 +141,8 @@ public class TimetableTest {
         assertTrue(foundIvanov);
         assertEquals(2, petrovCount);
         assertEquals(1, ivanovCount);
+        System.out.println("Coach class: " + coachPetrov.getClass().getProtectionDomain().getCodeSource().getLocation());
+
     }
 
     @Test
