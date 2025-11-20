@@ -11,14 +11,11 @@ public class Timetable {
     private final Map<DayOfWeek, TreeMap<TimeOfDay, TrainingSession>> timetable;
 
     public void addNewTrainingSession(TrainingSession trainingSession) {
-        if (this.timetable.containsKey(trainingSession.getDayOfWeek())) {
-            DayOfWeek dayOfWeek = trainingSession.getDayOfWeek();
-        } else {
-            this.timetable.put(trainingSession.getDayOfWeek(), new TreeMap<>());
-        }
-        TreeMap<TimeOfDay, TrainingSession> map = timetable.get(trainingSession.getDayOfWeek());
-        TimeOfDay time = trainingSession.getTimeOfDay();
-        map.put(time, trainingSession);
+        DayOfWeek dayOfWeek = trainingSession.getDayOfWeek();
+        TimeOfDay timeOfDay = trainingSession.getTimeOfDay();
+
+        timetable.computeIfAbsent(dayOfWeek, k -> new TreeMap<>());
+        timetable.get(dayOfWeek).put(timeOfDay, trainingSession);
     }
 
     public List<TrainingSession> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {

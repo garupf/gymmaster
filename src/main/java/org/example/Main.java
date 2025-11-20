@@ -17,7 +17,7 @@ public class Main {
                 gymData.getCoachByFullName("Шмотков Владимир Владимирович"), DayOfWeek.MONDAY, new TimeOfDay(10,0));
         timetable.addNewTrainingSession(session1);
         TrainingSession session2 = new TrainingSession(gymData.getGroupByName("гимнастика дети 11-12"),
-                gymData.getCoachByFullName("Шмотков Владимир Владимирович."), DayOfWeek.MONDAY, new TimeOfDay(13,0));
+                gymData.getCoachByFullName("Шмотков Владимир Владимирович"), DayOfWeek.MONDAY, new TimeOfDay(13,0));
         timetable.addNewTrainingSession(session2);
         TrainingSession session3 = new TrainingSession(gymData.getGroupByName("бассейн взрослые"),
                 gymData.getCoachByFullName("Семёнов Василий Константинович"), DayOfWeek.MONDAY, new TimeOfDay(14,0));

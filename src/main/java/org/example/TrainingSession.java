@@ -5,7 +5,7 @@ public class TrainingSession {
     //группа
     private Group group;
     //тренер
-    private static Coach coach;
+    private Coach coach;
     //день недели
     private DayOfWeek dayOfWeek;
     //время начала занятия
