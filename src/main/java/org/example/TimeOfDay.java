@@ -1,6 +1,6 @@
 package org.example;
 
-public class TimeOfDay {
+public class TimeOfDay implements Comparable<TimeOfDay> {
 
     //часы (от 0 до 23)
     private int hours;
@@ -10,6 +10,14 @@ public class TimeOfDay {
     public TimeOfDay(int hours, int minutes) {
         this.hours = hours;
         this.minutes = minutes;
+    }
+
+    @Override
+    public int compareTo(TimeOfDay o) {
+        if (this.hours != o.hours) {
+            return Integer.compare(this.hours, o.hours);
+        }
+        return Integer.compare(this.minutes, o.minutes);
     }
 
     public int getHours() {
